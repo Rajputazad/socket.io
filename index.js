@@ -12,7 +12,7 @@ const io = require('socket.io')(server, {
 
 io.on('connection', client => {
   client.on('message', data => { console.log(data);
-    io.emit('message', `${client.id.substr(0, 2)}: ${data}`)
+    io.emit('message', data)
 }
   );
   client.on('disconnect', () => {console.log('disconnect');});
