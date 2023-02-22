@@ -16,7 +16,23 @@ io.on('connection', client => {
 }
   );
   client.on('disconnect', () => {console.log('disconnect');});
+  
+  client.on('typing', (data) => {
+    io.emit('typing',`${data} is typing`);
+
+  });
+
+
+  client.on('typing stop', () => {
+    io.emit('typing stop');
+  });
+
+
+
+
 });
+
+
 server.listen(port,()=>{
     console.log("port:-"+port);
 });
